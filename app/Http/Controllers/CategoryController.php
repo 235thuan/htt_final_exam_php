@@ -9,31 +9,19 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view('categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new category.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('categories.create');
     }
 
-    /**
-     * Store a newly created category in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:categories',
-            // Add other validation rules as needed
         ]);
 
         Category::create($request->all());

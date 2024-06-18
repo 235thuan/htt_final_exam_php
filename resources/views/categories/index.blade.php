@@ -40,6 +40,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center mt-4">
+                        {{ $categories->links() }} <!-- Render pagination links -->
+                        </div>
                     </div>
                 @endif
             </div>
